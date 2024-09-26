@@ -1,36 +1,73 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Weather App
 
-## Getting Started
+This **Weather App** provides real-time weather data, including the current temperature, minimum and maximum temperatures, and a five-day forecast for any city you search. The five-day forecast includes detailed temperature data every three hours. This application uses data from the OpenWeatherMap API and features an intuitive and responsive design built with Tailwind CSS and Next.js.
 
-First, run the development server:
+## Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- **Real-Time Weather Data**: Get the current temperature along with min/max values for the selected city.
+- **5-Day Forecast**: Displays a five-day weather forecast with temperature updates every three hours.
+- **City Search**: Input any city name to retrieve weather data from around the world.
+- **Country Flags**: Displays the country flag of the selected city using country-flag-icons.
+- **Icons**: Uses modern weather icons from React Icons to represent weather conditions.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Demo
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+Check out the live demo: [Weather App Demo](#) _(Add link to your live site here)_
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Technologies Used
 
-## Learn More
+- **Next.js**: React-based framework for server-side rendering and static site generation.
+- **Tailwind CSS**: Utility-first CSS framework for fast and responsive design.
+- **OpenWeatherMap API**: For fetching real-time weather data.
+- **Country Flag Icons**: Displays country flags of searched cities.
+- **React Icons**: Provides weather-related icons for a clean and modern UI.
 
-To learn more about Next.js, take a look at the following resources:
+## Installation
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Follow the steps below to install and run the application locally:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+1. Clone the repository:
+    ```bash
+    git clone https://github.com/your-username/weather-app.git
+    ```
 
-## Deploy on Vercel
+2. Navigate to the project directory:
+    ```bash
+    cd weather-app
+    ```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+3. Install dependencies:
+    ```bash
+    npm install
+    ```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+4. Create a `.env.local` file in the root of the project and add your OpenWeatherMap API key:
+    ```bash
+    NEXT_PUBLIC_API_KEY=your_openweathermap_api_key
+    ```
+
+5. Run the development server:
+    ```bash
+    npm run dev
+    ```
+
+6. Open [http://localhost:3000](http://localhost:3000) in your browser to view the app.
+
+## Usage
+
+1. Enter the name of a city in the search input.
+2. The app will display the current weather, including min/max temperatures for the day.
+3. Below that, it will display a detailed five-day forecast with temperature updates every three hours.
+
+### Example API Usage
+
+Ensure you're using your own API key when making the API calls. Here’s how the `fetch` request should look like in the code:
+
+```js
+const fetchWeatherData = async (city) => {
+  const res = await fetch(
+    `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${process.env.NEXT_PUBLIC_API_KEY}&units=metric`
+  );
+  const data = await res.json();
+  return data;
+};
