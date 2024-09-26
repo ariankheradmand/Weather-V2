@@ -1,4 +1,4 @@
-const API_key = "7f54b4effe46c0a23400f161d53e6a7c";
+const API_key = "Fill this with your API key";
 
 export const current_data = async (city_name) => {
     const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city_name}&appid=${API_key}`)
